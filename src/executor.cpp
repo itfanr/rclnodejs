@@ -108,14 +108,15 @@ void Executor::Run(void* arg) {
         if (handle_manager->is_empty())
           continue;
 
-        if (rcl_wait_set_resize(
+        if (rcl_wait_set_resize_subscriptions(
+        //if (rcl_wait_set_resize(
             &wait_set,
-            handle_manager->subscription_count(),
+            handle_manager->subscription_count())!=RCL_RET_OK){
             // TODO(minggang): support guard conditions
-            0u,
-            handle_manager->timer_count(),
-            handle_manager->client_count(),
-            handle_manager->service_count()) != RCL_RET_OK) {
+            //0u,
+            //handle_manager->timer_count(),
+            //handle_manager->client_count(),
+            //handle_manager->service_count()) != RCL_RET_OK) {
               std::string error_message = std::string("Failed to resize: ")
                   + std::string(rcl_get_error_string_safe());
               throw std::runtime_error(error_message);
@@ -137,7 +138,8 @@ void Executor::Run(void* arg) {
           }
         }
 
-        if (rcl_wait_set_clear(&wait_set) != RCL_RET_OK) {
+        //if (rcl_wait_set_clear(&wait_set) != RCL_RET_OK) {
+        if (rcl_wait_set_clear_subscriptions(&wait_set) != RCL_RET_OK) {
           std::string error_message = std::string("Failed to clear wait set: ")
               + std::string(rcl_get_error_string_safe());
           throw std::runtime_error(error_message);

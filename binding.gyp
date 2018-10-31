@@ -52,10 +52,10 @@
               '-std=c++14'
             ],
             'include_dirs': [
-              "<!@(node -e \"console.log(process.env.COLCON_PREFIX_PATH.replace(/:/, '/include/ ') + '/include/')\")",
+		'/opt/ros/bouncy/include/'
             ],
             'library_dirs': [
-              "<!@(node -e \"console.log(process.env.COLCON_PREFIX_PATH.replace(/:/, '/lib/ ') + '/lib/')\")",
+		'/opt/ros/bouncy/lib/'
             ],
           }
         ],

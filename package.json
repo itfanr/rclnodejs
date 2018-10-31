@@ -42,14 +42,16 @@
     "mkdirp": "^0.5.1",
     "mz": "^2.6.0",
     "nan": "^2.8.0",
+    "node-gyp": "^3.8.0",
     "ref": "^1.3.4",
     "ref-array": "^1.2.0",
     "ref-struct": "^1.1.0",
-    "walk": "^2.3.9",
+    "ros2-actionlibjs": "^0.x.1",
     "uuid": "^3.2.1",
-    "ros2-actionlibjs": "^0.x.1"
+    "walk": "^2.3.9"
   },
   "engines": {
     "node": ">= 6.10.0"
-  }
+  },
+  "__npminstall_done": false
 }

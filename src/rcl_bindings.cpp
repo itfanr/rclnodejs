@@ -78,7 +78,8 @@ NAN_METHOD(CreateTimer) {
                                           &allocator),
                            rcl_get_error_string_safe());
   THROW_ERROR_IF_NOT_EQUAL(RCL_RET_OK,
-                           rcl_timer_init(timer, clock, RCL_MS_TO_NS(period_ms),
+                           //rcl_timer_init(timer, clock, RCL_MS_TO_NS(period_ms),
+                           rcl_timer_init(timer, RCL_MS_TO_NS(period_ms),
                                           nullptr, rcl_get_default_allocator()),
                            rcl_get_error_string_safe());
 
@@ -241,7 +242,8 @@ NAN_METHOD(ClockGetNow) {
   rcl_time.clock_type = ros_clock->type;
 
   THROW_ERROR_IF_NOT_EQUAL(RCL_RET_OK,
-      rcl_clock_get_now(ros_clock, &rcl_time.nanoseconds),
+      //rcl_clock_get_now(ros_clock, &rcl_time.nanoseconds),
+      rcl_clock_get_now(ros_clock, &rcl_time),
       rcl_get_error_string_safe());
 
   ReturnJSTimeObj(info, rcl_time.nanoseconds, rcl_time.clock_type);
@@ -266,7 +268,8 @@ NAN_METHOD(StaticClockGetNow) {
       rcl_get_error_string_safe());
 
   THROW_ERROR_IF_NOT_EQUAL(RCL_RET_OK,
-      rcl_clock_get_now(&ros_clock, &rcl_time.nanoseconds),
+      //rcl_clock_get_now(&ros_clock, &rcl_time.nanoseconds),
+      rcl_clock_get_now(&ros_clock, &rcl_time),
       rcl_get_error_string_safe());
 
   THROW_ERROR_IF_NOT_EQUAL(RCL_RET_OK,
